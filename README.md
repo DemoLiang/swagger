@@ -1,4 +1,4 @@
-# go swagger 自接口稳定demo
+# go swagger 自动生成文档demo
 
 ## 安装依赖支持
 ```$xslt
