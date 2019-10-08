@@ -1,0 +1,57 @@
+definitions:
+  model.Account:
+    properties:
+      id:
+        example: 1
+        format: int64
+        type: integer
+      name:
+        example: account name
+        type: string
+    type: object
+  model.HttpError:
+    properties:
+      code:
+        example: 200
+        type: integer
+      message:
+        example: Success
+        type: string
+    type: object
+info:
+  contact: {}
+  license: {}
+paths:
+  /:
+    post:
+      consumes:
+      - application/json
+      description: this is a sample server print func
+      parameters:
+      - description: Name
+        in: query
+        name: name
+        required: true
+        type: string
+      - description: Add account
+        in: body
+        name: account
+        required: true
+        schema:
+          $ref: '#/definitions/model.Account'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: error msg
+          schema:
+            $ref: '#/definitions/model.HttpError'
+        "400":
+          description: '{"code":400,"data":{},"msg":"fail"}'
+          schema:
+            type: string
+      summary: 打印测试接口
+      tags:
+      - print
+swagger: "2.0"
