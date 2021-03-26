@@ -6,8 +6,34 @@ go get -u github.com/swaggo/swag/cmd/swag
 go install github.com/swaggo/swag/cmd/swag
 ```
 
+## 示例代码注释
+```golang
+// @Summary 脚本修改接口
+// @Tags script
+// @Title script gets
+// @Version 1.0.0
+// @Description 脚本修改接口
+// @BasePath /api/v1
+// @Host 127.0.0.1:8004
+// @Accept json
+// @Produce json
+// @Param uuid query string true "uuid:要修改的脚本UUID"
+// @Param script body taskScriptPutForm true "script info"
+// @Success 200 {object} models.TaskScript "script info"
+// @Failure 400 object object "{"data": null, "message": "post script fail","code":1000111}"
+// @Router /api/job-ce/script/:uuid [put]
+func scriptPut(ctx *gin.Context) {
+    //TODO 
+}
+```
+
+## 自动生成命令
 将$GOPATH/bin 添加到环境变了$PATH
-在项目目录下执行：swag init
+在项目目录下执行: ```swag init -o src/modules/job/swagger/docs -g job.go  -d src/modules/job/ --parseDependency src/models/ ```
+- -o 定义自动生成的swagger文档输出目录
+- -g 指定main函数的文件
+- -d 指定扫描的目录
+- --parseDependency 指定查找依赖的路径
 
 ## 文档语法说明
 
