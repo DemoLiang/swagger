@@ -62,6 +62,20 @@ func scriptPut(ctx *gin.Context) {
    
 API文档有更新时，需要重新执行swag init 并重新编译代码运行 API Server   
 
+
+## 代码引入
+- 引入文档包： "XXXX/swagger/docs"
+- 加入控制开关和路由配置：
+```golang 
+	if config.Config.Logger.Level == "DEBUG" {
+		docs.SwaggerInfo.Title = "Job Service Auto Generate Api"
+		docs.SwaggerInfo.Description = "This is a job server."
+		docs.SwaggerInfo.Version = "1.0"
+		router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	}
+```
+
+
 ## API 接口访问
 
 ```
