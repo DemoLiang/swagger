@@ -47,7 +47,7 @@ func scriptPut(ctx *gin.Context) {
 - Produce: 输出的数据格式，这里是json格式
 - Param: 参数，分为6 个字段，其中第6个字段是可选的，各个字段含义位：
     1) 参数名称
-    2) 参数在HTTP请求中的位置,body,path,query 
+    2) 参数在HTTP请求中的位置,body,path,query,header 
     3) 参数类型 string,int,bool,struct 等
     4）是否必须 true,false
     5) 参数描述
